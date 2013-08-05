@@ -1,14 +1,11 @@
 class Bob
   def hey message
     message = Message.new(message.to_s)
-    if message.silent?
-      'Fine. Be that way!'
-    elsif message.loud?
-      'Woah, chill out!'
-    elsif message.question?
-      'Sure.'
-    else
-      'Whatever.'
+    case
+    when message.silent? then 'Fine. Be that way!'
+    when message.loud? then 'Woah, chill out!'
+    when message.question? then 'Sure.'
+    else 'Whatever.'
     end
   end
 end

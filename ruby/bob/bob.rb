@@ -10,16 +10,22 @@ class Bob
   end
 end
 
-class Message < String
+class Message
+  attr_reader :text
+
+  def initialize text
+    @text = text
+  end
+
   def silent?
-    strip.empty?
+    text.strip.empty?
   end
 
   def loud?
-    self == self.upcase
+    text == @text.upcase
   end
 
   def question?
-    end_with? '?'
+    text.end_with? '?'
   end
 end

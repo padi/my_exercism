@@ -11,6 +11,6 @@ class Phrase
   end
 
   def words
-    @text.downcase.gsub(/\W/,' ').split
+    @text.downcase.split(/\W+/)
   end
 end

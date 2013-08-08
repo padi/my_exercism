@@ -4,18 +4,10 @@ class Phrase
   end
 
   def word_count
-    words.reduce({}) do |result, word|
-      count_towards result, word
+    words.reduce(Hash.new(0)) do |counts, word|
+      counts[word] = counts[word] + 1
+      counts
     end
-  end
-
-  def count_towards result, word
-    if word_count = result[word]
-      result[word] = word_count + 1
-    else
-      result.merge!(word => 1)
-    end
-    result
   end
 
   def words

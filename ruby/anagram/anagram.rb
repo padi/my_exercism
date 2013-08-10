@@ -11,7 +11,7 @@ class Anagram
     @character_count_to_match == character_count(word)
   end
 
-  def character_count word
+  def character_count(word)
     word.downcase.chars.each_with_object(Hash.new(0)) do |char, counts|
       counts[char] = counts[char] + 1
     end

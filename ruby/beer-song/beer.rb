@@ -16,12 +16,16 @@ class Beer
 
   def second_line number_of_beers
     number_of_beers_left = number_of_beers - 1
-    number_of_beers_left = "no more" if number_of_beers_left == 0
+    beers_left = case number_of_beers_left
+                           when 0 then "no more bottles"
+                           when 1 then "1 bottle"
+                           else "#{number_of_beers_left} bottles"
+                           end
 
     the_beer = case number_of_beers
                when 1 then "it"
                else "one"
                end
-    "Take #{the_beer} down and pass it around, #{number_of_beers_left} bottles of beer on the wall.\n"
+    "Take #{the_beer} down and pass it around, #{beers_left} of beer on the wall.\n"
   end
 end

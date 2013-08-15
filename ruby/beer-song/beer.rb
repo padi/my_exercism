@@ -6,26 +6,35 @@ class Beer
   end
 
   def first_line number_of_beers
-    bottles = case number_of_beers
-              when 1 then "1 bottle"
-              else "#{number_of_beers} bottles"
-              end
-
-    "#{bottles} of beer on the wall, #{bottles} of beer.\n"
+    "#{bottles(number_of_beers)} of beer on the wall, #{bottles(number_of_beers)} of beer.\n"
   end
 
   def second_line number_of_beers
-    number_of_beers_left = number_of_beers - 1
-    beers_left = case number_of_beers_left
-                           when 0 then "no more bottles"
-                           when 1 then "1 bottle"
-                           else "#{number_of_beers_left} bottles"
-                           end
+    "Take #{the_beer(number_of_beers)} down and pass it around, #{beers_left(number_of_beers)} of beer on the wall.\n"
+  end
 
-    the_beer = case number_of_beers
-               when 1 then "it"
-               else "one"
-               end
-    "Take #{the_beer} down and pass it around, #{beers_left} of beer on the wall.\n"
+  private
+
+  def bottles number_of_beers
+    case number_of_beers
+    when 1 then "1 bottle"
+    else "#{number_of_beers} bottles"
+    end
+  end
+
+  def the_beer number_of_beers
+    case number_of_beers
+    when 1 then "it"
+    else "one"
+    end
+  end
+
+  def beers_left(number_of_beers)
+    number_of_beers_left = number_of_beers - 1
+    case number_of_beers_left
+    when 0 then "no more bottles"
+    when 1 then "1 bottle"
+    else "#{number_of_beers_left} bottles"
+    end
   end
 end

@@ -7,22 +7,26 @@ class Beer
   end
 
   def verse(number_of_beers)
-    result = first_line(number_of_beers).capitalize
-    result << second_line(number_of_beers).capitalize
+    result = start(number_of_beers)
+    result << action_for(number_of_beers)
+    result << ending(number_of_beers)
     result
   end
 
-  def first_line(number_of_beers)
-    "#{bottles(number_of_beers)} of beer on the wall, #{bottles(number_of_beers)} of beer.\n"
+  def start(number_of_beers)
+    "#{bottles(number_of_beers)} of beer on the wall, #{bottles(number_of_beers)} of beer.\n".capitalize
   end
 
-  def second_line(number_of_beers)
-    first_sentence = if number_of_beers == 0
+  def action_for(number_of_beers)
+    if number_of_beers == 0
       "Go to the store and buy some more,"
     else
       "Take #{the_beer(number_of_beers)} down and pass it around,"
-    end
-    first_sentence + " #{beers_left(number_of_beers)} of beer on the wall.\n"
+    end.capitalize
+  end
+
+  def ending(number_of_beers)
+    " #{beers_left(number_of_beers)} of beer on the wall.\n"
   end
 
   private

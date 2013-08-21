@@ -7,17 +7,19 @@ class Beer
   end
 
   def verse(number_of_beers)
-    result = start(number_of_beers)
-    result << action_for(number_of_beers)
-    result << ending(number_of_beers)
+    result = BeerSongPhrases.start(number_of_beers)
+    result << BeerSongPhrases.action_for(number_of_beers)
+    result << BeerSongPhrases.ending(number_of_beers)
     result
   end
+end
 
-  def start(number_of_beers)
+class BeerSongPhrases
+  def self.start(number_of_beers)
     "#{bottles(number_of_beers)} of beer on the wall, #{bottles(number_of_beers)} of beer.\n".capitalize
   end
 
-  def action_for(number_of_beers)
+  def self.action_for(number_of_beers)
     if number_of_beers == 0
       "Go to the store and buy some more,"
     else
@@ -25,13 +27,13 @@ class Beer
     end.capitalize
   end
 
-  def ending(number_of_beers)
+  def self.ending(number_of_beers)
     " #{beers_left(number_of_beers)} of beer on the wall.\n"
   end
 
   private
 
-  def bottles(number_of_beers)
+  def self.bottles(number_of_beers)
     case number_of_beers
     when 0 then "no more bottles"
     when 1 then "1 bottle"
@@ -39,14 +41,14 @@ class Beer
     end
   end
 
-  def the_beer(number_of_beers)
+  def self.the_beer(number_of_beers)
     case number_of_beers
     when 1 then "it"
     else "one"
     end
   end
 
-  def beers_left(number_of_beers)
+  def self.beers_left(number_of_beers)
     number_of_beers_left = (number_of_beers - 1) % 100
     case number_of_beers_left
     when 0 then "no more bottles"

@@ -41,9 +41,6 @@ class BeerSongPhrases
   end
 
   def self.refer_to_beer(number_of_beers)
-    case number_of_beers
-    when 1 then "it"
-    else "one"
-    end
+    number_of_beers == 1 ? "it" : "one"
   end
 end
